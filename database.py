@@ -25,4 +25,20 @@ def validate_user(nickname, password):
         return response
       return False
 
-print(validate_user("wayne", "e9d05fa6-c315-462a-b2cf-254b046bfbe1"))
+def get_all_guests():
+  with psycopg2.connect(db_string) as conn:
+    with conn.cursor() as curr:
+      sql = 'SELECT name, email, rsvp, nickname, password FROM guests'
+      curr.execute(sql)
+      response = curr.fetchall()
+    
+      return response
+
+def add_invite_to_db(name, nickname, email):
+  with psycopg2.connect(db_string) as conn:
+    with conn.cursor() as curr:
+      sql = 'INSERT INTO guests (name, nickname, email) VALUES (%s, %s, %s)'
+      curr.execute(sql, [name, nickname, email])
+
+
+#get_all_guests()

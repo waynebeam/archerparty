@@ -1,12 +1,21 @@
-from flask import Flask, redirect, url_for, request
-from database import validate_user
+from flask import Flask, redirect, url_for, request, render_template, session
+from database import validate_user, get_all_guests, add_invite_to_db
+import os
+
+CORRECT_PASSWORD = os.environ['PASSWORD']
+
+base_url = 'https://archerparty.waynebeam.repl.co'
 
 app = Flask(__name__)
 
+app.secret_key = os.environ['FLASK_SECRET_KEY']
 
 @app.route('/')
 def index():
-    return "Archer's Blue's Clues Party!"
+    return """
+    <h1>Archer's Blue's Clues Party!
+    <a href="/login">Login
+    """
 
 @app.route("/invite/<nickname>/<password>")
 def show_invite(nickname, password):
@@ -14,8 +23,8 @@ def show_invite(nickname, password):
   if response:
     name = response[1]
     id = response[0]
-    return f'Hello {name}!'
-  return redirect(url_for('index'))
+    return f"Hello {name}!"
+    return redirect(url_for('index'))
 
 @app.post('/rsvp')
 def rsvp():
@@ -23,6 +32,40 @@ def rsvp():
   id = data['id']
   is_coming = data['rsvp']
   #we get this data from the page form, then here we will pass to the db
-  
+
+@app.get('/login')  
+def show_login_page():
+  return render_template("login.html")
+
+@app.post('/login')
+def login():
+  data = request.form
+  if data['password'] == CORRECT_PASSWORD:
+    session["user"] = "tiff"
+    return redirect(url_for('show_guest_list'),)
+
+  return redirect(url_for("show_login_page"))
+
+@app.route('/logout')
+def logout():
+  if 'user' in session:
+    session.pop('user')
+  return redirect(url_for("show_login_page"))
+
+@app.route('/guest-list')
+def show_guest_list():
+  if 'user' in session:
+    guests = get_all_guests()
+    rsvp_yes = [x for x in guests if x[2] is True]
+    rsvp_no = [x for x in guests if x[2] is False]
+    rsvp_not_yet = [x for x in guests if x[2] is None]
+    return render_template("guestlist.html", rsvp_yes=rsvp_yes, rsvp_no=rsvp_no, rsvp_not_yet=rsvp_not_yet, base_url=base_url)
+  return redirect(url_for("show_login_page"))
+
+@app.post('/add-invite')
+def add_invite():
+  data = request.form
+  add_invite_to_db(data['name'],data['nickname'], data['email'])
+  return redirect(url_for('show_guest_list'))
 
 app.run(host='0.0.0.0', port=81)

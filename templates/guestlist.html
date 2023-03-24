@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest List</title>
+</head>
+<body>
+  <h1>Hi Tiff!</h1>
+  <a href="/logout">logout</a>
+   <fieldset>
+     <legend>Invite a guest</legend>
+     <form method="post" action='/add-invite'>
+       <label for="name">Full Name</label>     
+       <input type="text" name="name" required>
+       <label for="nickname">Nickname</label>     
+       <input type="text" name="nickname" required>
+       <label for="email">Email</label>     
+       <input type="text" name="email">
+       <input type="submit">
+     </form>
+     
+   </fieldset>
+  
+  <h2>Confirmed Guests ({{rsvp_yes|length}})</h2>
+  {%for guest in rsvp_yes%}
+    <p>{{guest[0]}}</p>
+  {%endfor%}
+  <br /><br />
+  
+  <h2>Unconfirmed Invitees ({{rsvp_not_yet|length}})</h2>
+  {%for guest in rsvp_not_yet%}
+    <p>{{guest[0]}} - <a href="/invite/{{guest[3]}}/{{guest[4]}}">invite link</a></p>
+  {%endfor%}
+  <br /><br />
+
+  <h2>Not Coming ({{rsvp_no|length}})</h2>
+  {%for guest in rsvp_no%}
+    <p>{{guest[0]}}</p>
+  {%endfor%}
+</body>
+</html>
