@@ -18,7 +18,7 @@ def validate_user(nickname, password):
     return False
   with psycopg2.connect(db_string) as conn:
     with conn.cursor() as curr:
-      sql = 'SELECT name FROM guests WHERE nickname = %s'
+      sql = 'SELECT id, name FROM guests WHERE nickname = %s'
       curr.execute(sql, [nickname])
       return curr.fetchone()
 
