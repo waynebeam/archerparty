@@ -40,5 +40,10 @@ def add_invite_to_db(name, nickname, email):
       sql = 'INSERT INTO guests (name, nickname, email) VALUES (%s, %s, %s)'
       curr.execute(sql, [name, nickname, email])
 
+def rsvp_to_db(id, is_coming):
+  with psycopg2.connect(db_string) as conn:
+    with conn.cursor() as curr:
+      sql = 'UPDATE guests SET rsvp = %s WHERE id = %s'
+      curr.execute(sql,[is_coming, id])
 
 #get_all_guests()

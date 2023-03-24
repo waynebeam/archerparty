@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitation for {{name}}</title>
+</head>
+<body>
+  <h1>Hello {{name}}!</h1>
+  <p>You're invited to Archer's Blue's Clue's Party!</p>
+  <form action='/rsvp' method='post'>
+    <legend>Can you come?</legend>
+    <label for="yes">Yes!</label>
+    <input type=radio required id="yes" name='rsvp' value="yes">
+    <label for="no">No...</label>
+    <input type=radio required name='rsvp' id='no' value="no">
+    <input type="hidden" name='id' value={{id}}>
+    <input type='submit'>
+  </form>
+</body>
+</html>

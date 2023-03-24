@@ -1,5 +1,5 @@
 from flask import Flask, redirect, url_for, request, render_template, session
-from database import validate_user, get_all_guests, add_invite_to_db
+from database import validate_user, get_all_guests, add_invite_to_db,rsvp_to_db
 import os
 
 CORRECT_PASSWORD = os.environ['PASSWORD']
@@ -23,14 +23,22 @@ def show_invite(nickname, password):
   if response:
     name = response[1]
     id = response[0]
-    return f"Hello {name}!"
+    return render_template("invite.html", name=name, id=id)
     return redirect(url_for('index'))
 
 @app.post('/rsvp')
 def rsvp():
   data = request.form
   id = data['id']
-  is_coming = data['rsvp']
+  is_coming = False
+  if data['rsvp'] == "yes":
+    is_coming = True
+
+  rsvp_to_db(id, is_coming)
+
+  return "Thanks!"
+  
+
   #we get this data from the page form, then here we will pass to the db
 
 @app.get('/login')  
