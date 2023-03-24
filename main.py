@@ -18,7 +18,7 @@ def show_invite(nickname, password):
   return redirect(url_for('index'))
 
 @app.post('/rsvp')
-def rsvp:
+def rsvp():
   data = request.form
   id = data['id']
   is_coming = data['rsvp']

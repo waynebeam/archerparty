@@ -14,12 +14,15 @@ def test_db_access():
 
 
 def validate_user(nickname, password):
-  if password != correct_password:
-    return False
   with psycopg2.connect(db_string) as conn:
     with conn.cursor() as curr:
-      sql = 'SELECT id, name FROM guests WHERE nickname = %s'
+      sql = 'SELECT id, name, password FROM guests WHERE nickname = %s'
       curr.execute(sql, [nickname])
-      return curr.fetchone()
+      response = curr.fetchone()
+      if not response:
+        return False
+      if response[2] == password:
+        return response
+      return False
 
-print(validate_user("wayne", "archparty")[0])
+print(validate_user("wayne", "e9d05fa6-c315-462a-b2cf-254b046bfbe1"))
