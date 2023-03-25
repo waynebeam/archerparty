@@ -23,8 +23,10 @@ def show_invite(nickname, password):
   if response:
     name = response[1]
     id = response[0]
-    return render_template("invite.html", name=name, id=id)
-    return redirect(url_for('index'))
+    session['name'] = name
+    session['id'] = id
+    return render_template("invite-letter.html", name=name, id=id)
+  return redirect(url_for('index'))
 
 @app.post('/rsvp')
 def rsvp():
@@ -35,7 +37,8 @@ def rsvp():
     is_coming = True
 
   rsvp_to_db(id, is_coming)
-
+  session.pop('id')
+  session.pop('name')
   return "Thanks!"
   
 
@@ -44,6 +47,11 @@ def rsvp():
 @app.get('/login')  
 def show_login_page():
   return render_template("login.html")
+
+@app.route('/open-letter')
+def open_letter():
+  if session['id']:
+    return render_template("invite.html", name=session['name'], id=session['id'])
 
 @app.post('/login')
 def login():
