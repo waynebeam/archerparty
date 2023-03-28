@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archer's Blue's Clue's Party!</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <div id="home-container">
+  <h1 class='blues-clues-font'>Archer's Blue's Clues Party!</h1>
+  <object class="pawprint"
+    data="{{url_for('static', filename='pawprint.svg')}}"
+    width="350px" height="350px"></object>
+  <div id="party-info">
+    <p class='blues-clues-font-small'>Where: 37 Twin Wells Court Middletown, NY 10940</p>
+    <p class='blues-clues-font-small'>When: Saturday August 12, 2023</p>
+    <p class='blues-clues-font-small'>Time: 9am</p>
+   
+       </div>
+  <a href="/login">Login</a>
+  </div>
+</body>
+</html>

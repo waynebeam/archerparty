@@ -5,11 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitation for {{name}}</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
-  <h1>Hello {{name}}!</h1>
+  <h1 class='blues-clues-font'>Hello {{name}}!</h1>
   <p>You're invited to Archer's Blue's Clue's Party!</p>
-  <form action='/rsvp' method='post'>
+  <object delay='0' class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
+   <object delay='1' class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
+   <object delay='2' class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
+  <form id='rsvp' action='/rsvp' method='post'>
     <legend>Can you come?</legend>
     <label for="yes">Yes!</label>
     <input type=radio required id="yes" name='rsvp' value="yes">
@@ -18,5 +22,6 @@
     <input type="hidden" name='id' value={{id}}>
     <input type='submit'>
   </form>
+  <object data="{{url_for('static', filename='notebook.svg')}}" ></object>
 </body>
 </html>

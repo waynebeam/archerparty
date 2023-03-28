@@ -5,9 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{name}} just got a letter!</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
-  <h1>{{name}} just got a letter!</h1>
-  <a href='/open-letter'>open it!</a>
+  <div id="letter-container">
+  <h1 class='blues-clues-font' id="just-got-a-letter">{{name}} just got a letter!</h1>
+  <a href='/open-letter' id="open-letter-link">I wonder who it's from!</a>
+  </div>
 </body>
 </html>

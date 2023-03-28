@@ -1,0 +1,37 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="letter">
+<rect x="2.5" y="2.5" width="395" height="295" fill="#00AEEF"/>
+<g id="stamp">
+<circle id="Ellipse 1" cx="299.5" cy="106.5" r="11.5" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 4" cx="299.5" cy="31.5" r="11.5" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 2" cx="324.5" cy="106.5" r="11.5" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 5" cx="324.5" cy="31.5" r="11.5" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 3" cx="349.5" cy="106.5" r="11.5" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<g id="Group 3">
+<circle id="Ellipse 7" cx="286.5" cy="93.5" r="11.5" transform="rotate(-180 286.5 93.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 8" cx="286.5" cy="68.5" r="11.5" transform="rotate(-180 286.5 68.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 9" cx="286.5" cy="43.5" r="11.5" transform="rotate(-180 286.5 43.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+</g>
+<g id="Group 2">
+<circle id="Ellipse 7_2" cx="361.5" cy="93.5" r="11.5" transform="rotate(-180 361.5 93.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 8_2" cx="361.5" cy="68.5" r="11.5" transform="rotate(-180 361.5 68.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 9_2" cx="361.5" cy="43.5" r="11.5" transform="rotate(-180 361.5 43.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+</g>
+<g id="Group 4">
+<circle id="Ellipse 7_3" cx="286.5" cy="93.5" r="11.5" transform="rotate(-180 286.5 93.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 8_3" cx="286.5" cy="68.5" r="11.5" transform="rotate(-180 286.5 68.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<circle id="Ellipse 9_3" cx="286.5" cy="43.5" r="11.5" transform="rotate(-180 286.5 43.5)" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+</g>
+<circle id="Ellipse 6" cx="349.5" cy="31.5" r="11.5" fill="#DFC66E" stroke="white" stroke-width="2" stroke-miterlimit="16" stroke-linejoin="round"/>
+<rect id="Rectangle 1" x="287.5" y="31.5" width="74" height="74" fill="#DFC66E" stroke="white" stroke-miterlimit="16" stroke-linejoin="round"/>
+</g>
+<g id="pawprint">
+<path id="Ellipse 10" d="M337.424 83.8287C333.517 94.5653 327.609 99.0176 317.543 95.354C307.478 91.6905 302.898 83.4211 306.806 72.6845C314.791 64.3559 319.33 59.128 329.395 62.7916C337.479 72.3384 341.332 73.0921 337.424 83.8287Z" fill="#004A8F"/>
+<path id="Ellipse 11" d="M315.113 58.0399C314.359 62.3191 311.574 65.4049 308.894 64.9323C306.213 64.4597 304.652 60.6076 305.407 56.3284C306.161 52.0492 308.946 48.9634 311.626 49.436C314.307 49.9086 315.868 53.7607 315.113 58.0399Z" fill="#004A8F"/>
+<path id="Ellipse 12" d="M331.286 51.9012C329.815 57.3915 323.643 61.6358 321.889 60.0381C318.17 59.0416 316.348 53.783 317.819 48.2927C319.29 42.8024 323.498 39.1595 327.216 40.1559C330.935 41.1524 332.085 44.0291 331.286 51.9012Z" fill="#004A8F"/>
+<path id="Ellipse 13" d="M343.344 60.7901C340.487 65.7376 338.53 67.1825 333.913 65.502C330.573 63.5739 330.181 58.0002 333.038 53.0528C335.894 48.1053 339.658 48.9911 343.237 49.7433C345.909 53.743 346.2 55.8427 343.344 60.7901Z" fill="#004A8F"/>
+<path id="Ellipse 14" d="M350.003 74.2216C347.248 77.5038 343.689 79.2259 341.172 77.1144C338.656 75.003 339.982 71.0061 342.736 67.7239C345.49 64.4417 348.63 63.1171 351.146 65.2285C354.312 69.1855 352.757 70.9394 350.003 74.2216Z" fill="#004A8F"/>
+</g>
+<rect x="2.5" y="2.5" width="395" height="295" stroke="#004A8F" stroke-width="5"/>
+</g>
+</svg>

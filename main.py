@@ -12,10 +12,7 @@ app.secret_key = os.environ['FLASK_SECRET_KEY']
 
 @app.route('/')
 def index():
-    return """
-    <h1>Archer's Blue's Clues Party!
-    <a href="/login">Login
-    """
+    return render_template('index.html')
 
 @app.route("/invite/<nickname>/<password>")
 def show_invite(nickname, password):
@@ -42,8 +39,6 @@ def rsvp():
   return "Thanks!"
   
 
-  #we get this data from the page form, then here we will pass to the db
-
 @app.get('/login')  
 def show_login_page():
   return render_template("login.html")
@@ -52,6 +47,7 @@ def show_login_page():
 def open_letter():
   if session['id']:
     return render_template("invite.html", name=session['name'], id=session['id'])
+  return 'bad link'
 
 @app.post('/login')
 def login():

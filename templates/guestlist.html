@@ -5,10 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guest List</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
-  <h1>Hi Tiff!</h1>
-  <a href="/logout">logout</a>
+  <div class="guest-list-container">
+  <h1 class='blues-clues-font'>Hi Tiff!</h1>
+  <a class='small-link' href="/logout">logout</a>
    <fieldset>
      <legend>Invite a guest</legend>
      <form method="post" action='/add-invite'>
@@ -25,22 +27,24 @@
      </form>
      
    </fieldset>
-  
-  <h2>Confirmed Guests ({{rsvp_yes|length}})</h2>
-  {%for guest in rsvp_yes%}
-    <p>{{guest[0]}}</p>
-  {%endfor%}
-  <br /><br />
-  
-  <h2>Unconfirmed Invitees ({{rsvp_not_yet|length}})</h2>
-  {%for guest in rsvp_not_yet%}
-    <p>{{guest[0]}} - <a href="/invite/{{guest[3]}}/{{guest[4]}}">invite link</a></p>
-  {%endfor%}
-  <br /><br />
-
-  <h2>Not Coming ({{rsvp_no|length}})</h2>
-  {%for guest in rsvp_no%}
-    <p>{{guest[0]}}</p>
-  {%endfor%}
+    <div id="guest-list-body">
+      <h2>Confirmed Guests ({{rsvp_yes|length}})</h2>
+      {%for guest in rsvp_yes%}
+        <p>{{guest[0]}}</p>
+      {%endfor%}
+      <br /><br />
+      
+      <h2>Unconfirmed ({{rsvp_not_yet|length}})</h2>
+      {%for guest in rsvp_not_yet%}
+        <p>{{guest[0]}} - <a class='small-link' href="/invite/{{guest[3]}}/{{guest[4]}}">invite link</a></p>
+      {%endfor%}
+      <br /><br />
+    
+      <h2>Not Coming ({{rsvp_no|length}})</h2>
+      {%for guest in rsvp_no%}
+        <p>{{guest[0]}}</p>
+      {%endfor%}
+    </div>
+  </div>
 </body>
 </html>
