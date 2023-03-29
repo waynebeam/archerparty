@@ -10,11 +10,17 @@
 <body>
   <h1 class='blues-clues-font'>Hello {{name}}!</h1>
   <p>You're invited to Archer's Blue's Clue's Party!</p>
-  <object delay='0' class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
-   <object delay='1' class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
-   <object delay='2' class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
-  <form id='rsvp' action='/rsvp' method='post'>
+  
+  <object class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
+   <object class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
+   <object class="pawprint" data="{{url_for('static', filename='pawprint.svg')}}" width="150px" height="150px"></object>
+<br>
+  {% include 'party-info.html' %}
+  <br>
+
+  <fieldset>
     <legend>Can you come?</legend>
+  <form id='rsvp' action='/rsvp' method='post'>
     <label for="yes">Yes!</label>
     <input type=radio required id="yes" name='rsvp' value="yes">
     <label for="no">No...</label>
@@ -22,6 +28,7 @@
     <input type="hidden" name='id' value={{id}}>
     <input type='submit'>
   </form>
+  </fieldset>
   <object data="{{url_for('static', filename='notebook.svg')}}" ></object>
 </body>
 </html>

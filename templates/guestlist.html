@@ -23,7 +23,7 @@
        <label for="email">Email</label>     
        <input type="text" name="email">
        <br>
-       <input type="submit">
+       <button type="submit">Add invite</button>
      </form>
      
    </fieldset>
@@ -45,6 +45,26 @@
         <p>{{guest[0]}}</p>
       {%endfor%}
     </div>
+
+    <fieldset>
+      <legend>Edit party details</legend>
+      <form method="post" action='/update-party-info'>
+        <label for='party-date'>Party Date:</label>
+        <input type="text" name='party-date' id='party-date' 
+          value="{{party_info['party-date']}}">
+        <br>
+        <label for='party-time'>Party Time:</label>
+        <input type="text" name='party-time' id='party-time' 
+          value="{{party_info['party-time']}}">
+        <br>
+        <label for='party-location'>Party Location:</label>
+        <input type="text" name='party-location' id='party-location' 
+          value="{{party_info['party-location']}}">
+        <br>
+        <button type="submit">Update details</button>
+      </form>
+    </fieldset>
+    
   </div>
 </body>
 </html>

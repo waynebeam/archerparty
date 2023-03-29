@@ -90,12 +90,12 @@ fieldset {
   animation: pawprint-anim 2s linear alternate infinite;
 }
 
-#party-info {
+/* #party-info {
   text-align: left;
   position: absolute;
   top: 30%; 
   left: 25px;
-}
+} */
 
 .guest-list-container {
   width: 400px;
@@ -122,5 +122,11 @@ fieldset {
 #rsvp {
   font-size: 2em;
   margin: 50px auto;
+  text-align:center;
+}
+
+input[type='radio'] {
+  width: 50px;
+  height: 50px;
 }
 

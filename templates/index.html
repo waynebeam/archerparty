@@ -13,12 +13,7 @@
   <object class="pawprint"
     data="{{url_for('static', filename='pawprint.svg')}}"
     width="350px" height="350px"></object>
-  <div id="party-info">
-    <p class='blues-clues-font-small'>Where: 37 Twin Wells Court Middletown, NY 10940</p>
-    <p class='blues-clues-font-small'>When: Saturday August 12, 2023</p>
-    <p class='blues-clues-font-small'>Time: 9am</p>
-   
-       </div>
+  {% include 'party-info.html' %}
   <a href="/login">Login</a>
   </div>
 </body>

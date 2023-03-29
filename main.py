@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, request, render_template, session
 from database import validate_user, get_all_guests, add_invite_to_db,rsvp_to_db
 import os
+import json
 
 CORRECT_PASSWORD = os.environ['PASSWORD']
 
@@ -12,7 +13,8 @@ app.secret_key = os.environ['FLASK_SECRET_KEY']
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+  party_info = load_party_info()
+  return render_template('index.html', party_info=party_info)
 
 @app.route("/invite/<nickname>/<password>")
 def show_invite(nickname, password):
@@ -46,7 +48,8 @@ def show_login_page():
 @app.route('/open-letter')
 def open_letter():
   if session['id']:
-    return render_template("invite.html", name=session['name'], id=session['id'])
+    party_info = load_party_info()
+    return render_template("invite.html", name=session['name'], id=session['id'], party_info=party_info)
   return 'bad link'
 
 @app.post('/login')
@@ -71,13 +74,30 @@ def show_guest_list():
     rsvp_yes = [x for x in guests if x[2] is True]
     rsvp_no = [x for x in guests if x[2] is False]
     rsvp_not_yet = [x for x in guests if x[2] is None]
-    return render_template("guestlist.html", rsvp_yes=rsvp_yes, rsvp_no=rsvp_no, rsvp_not_yet=rsvp_not_yet, base_url=base_url)
+    party_info = load_party_info()
+    return render_template("guestlist.html", rsvp_yes=rsvp_yes, rsvp_no=rsvp_no, rsvp_not_yet=rsvp_not_yet, base_url=base_url, party_info=party_info)
   return redirect(url_for("show_login_page"))
+
+@app.post('/update-party-info')
+def update_party_info():
+  raw_data = request.form
+  data = json.dumps(raw_data)
+  with open('party_info.txt', 'w') as f:
+    f.write(data)
+  return redirect(url_for('show_guest_list'))
+  
+
+def load_party_info():
+  with open("party_info.txt", 'r') as f:
+    data = json.loads(f.read())
+    return data
 
 @app.post('/add-invite')
 def add_invite():
   data = request.form
   add_invite_to_db(data['name'],data['nickname'], data['email'])
   return redirect(url_for('show_guest_list'))
+
+
 
 app.run(host='0.0.0.0', port=81)
