@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, request, render_template, session
 from database import validate_user, get_all_guests, add_invite_to_db,rsvp_to_db
 import os
 import json
+import re
 
 CORRECT_PASSWORD = os.environ['PASSWORD']
 
@@ -95,9 +96,21 @@ def load_party_info():
 @app.post('/add-invite')
 def add_invite():
   data = request.form
-  add_invite_to_db(data['name'],data['nickname'], data['email'])
+  name = data['name']
+  nickname = get_nickname(name)
+  add_invite_to_db(name,nickname, data['email'])
   return redirect(url_for('show_guest_list'))
 
-
+def get_nickname(name):
+  pattern = r'\w*'
+  nickname = name.split()[0]
+  nickname = re.search(pattern, name)
+  nickname =  nickname.group(0).lower()
+  return nickname
 
 app.run(host='0.0.0.0', port=81)
+
+
+#TODO need to make the party info, and maybe even the guest list(?)
+#an API endpoint. Should be easy to do, just need to do it. Also the styling on the invite and main page. Field sets, and the radio buttons. 
+#note book always seems pushed to the right. not sure why it doesnt center better. also radios look differwnt on phone and browswer. so careful with the styling. may need to make all containers smaller to fit phone better
